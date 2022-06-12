@@ -7,14 +7,15 @@ def sendEmail():
     pswd = input("Type in the password of the sender email to start the scrape: ")
     context = ssl.create_default_context()
     receiver = "aziz.rmadi@gmail.com"
+    sender = "ps5pricetracker@gmail.com"
     message = """ \
     Subject: PS5 restock. 
 
     A new PS5 restock has arrived. Check it out before the consoles are gone."""
 
     with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server: 
-        server.login("ps5pricetracker@gmail.com", pswd)
-        server.sendmail("ps5pricetracker@gmail.com", receiver, message)
+        server.login(sender, pswd)
+        server.sendmail(sender, receiver, message)
     
     return 
     
