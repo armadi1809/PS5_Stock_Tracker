@@ -1,13 +1,16 @@
 import requests, smtplib, ssl, time
 from bs4 import BeautifulSoup as bs
+from dotenv import load_dotenv
+import os
 
 
 port = 465
 def sendEmail(): 
-    pswd = input("Type in the password of the sender email to start the scrape: ")
+    load_dotenv() 
+    pswd = os.environ.get("sender_pwd")
     context = ssl.create_default_context()
-    receiver = "aziz.rmadi@gmail.com"
-    sender = "ps5pricetracker@gmail.com"
+    receiver = os.environ.get("receiver_email")
+    sender = os.environ.get("sender_email")
     message = """ \
     Subject: PS5 restock. 
 
